@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuLiveTV"
+        android:icon="@mipmap/ic_live_tv_01"
+        android:title="@string/menu_live_tv"/>
+    <item
+        android:id="@+id/menuNews"
+        android:icon="@mipmap/ic_news_01"
+        android:title="@string/menu_news"/>
+    <item
+        android:id="@+id/menuRadio"
+        android:icon="@mipmap/ic_radio_01"
+        android:title="@string/menu_radio"/>
+    <item
+        android:id="@+id/menuLegislation"
+        android:icon="@mipmap/ic_legislation_01"
+        android:title="@string/menu_legislation"/>
+    <item
+        android:id="@+id/menuBook"
+        android:icon="@mipmap/ic_digital_book_01"
+        android:title="@string/menu_digital_book"/>
+    <item
+        android:id="@+id/menuPrivacy"
+        android:icon="@mipmap/ic_privacy_01"
+        android:title="@string/menu_privacy"/>
+    <item
+        android:id="@+id/menuAbout"
+        android:icon="@mipmap/ic_about_01"
+        android:title="@string/menu_about"/>
+</menu>

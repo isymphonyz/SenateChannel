@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "750504999097",
+    "firebase_url": "https://senatechannel-220110.firebaseio.com",
+    "project_id": "senatechannel-220110",
+    "storage_bucket": "senatechannel-220110.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750504999097:android:72686dfd13d85f6e",
+        "android_client_info": {
+          "package_name": "com.dooplus.keng.tvsenate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750504999097-t0cg137fubqk6iq8lun21pahv3pdodrd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dooplus.keng.tvsenate",
+            "certificate_hash": "9738fb010ed46c29ee63c904cd099be9aea0b5e0"
+          }
+        },
+        {
+          "client_id": "750504999097-7k5hn81kfujuf2rlcpn94u3ed8r2di2b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK8rUOmh0C3Cc5AIXUqS7OkoF-Rfi4Uys"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750504999097-7k5hn81kfujuf2rlcpn94u3ed8r2di2b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
