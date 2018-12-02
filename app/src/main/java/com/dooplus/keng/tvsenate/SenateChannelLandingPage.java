@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.dooplus.keng.tvsenate.connection.SenateChannelAPI;
+import com.dooplus.keng.tvsenate.customview.SukhumvitTextView;
 import com.dooplus.keng.tvsenate.utils.AppPreference;
 import com.dooplus.keng.tvsenate.utils.MyConfiguration;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -34,6 +35,7 @@ public class SenateChannelLandingPage extends AppCompatActivity {
     protected int _splashTime = 5000; // time to display the splash screen in ms
 
     private ProgressBar progressBar;
+    private SukhumvitTextView txtVersion;
 
     private AppPreference appPreference;
 
@@ -53,6 +55,15 @@ public class SenateChannelLandingPage extends AppCompatActivity {
         setContentView(R.layout.landing_page);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        txtVersion = (SukhumvitTextView) findViewById(R.id.txtVersion);
+
+        try {
+            PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+            String appVersion = pInfo.versionName;
+            txtVersion.setText("Ver. " + appVersion);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         landingPageImageList = new ArrayList<>();
 
@@ -233,7 +244,10 @@ public class SenateChannelLandingPage extends AppCompatActivity {
                 }
 
             } else {
-
+                Intent intent = new Intent(getApplicationContext(), SenateChannelHomeV3.class);
+                intent.putExtra("fragmentNumber", 0);
+                startActivity(intent);
+                finish();
             }
         } catch (JSONException e) {
             e.printStackTrace();

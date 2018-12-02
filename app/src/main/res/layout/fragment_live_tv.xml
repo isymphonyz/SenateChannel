@@ -9,6 +9,46 @@
         android:layout_height="wrap_content"
         android:background="@color/colorBackground">
 
+        <LinearLayout
+            android:id="@+id/layoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            android:background="@color/colorBackgroundSubtitle">
+
+            <com.dooplus.keng.tvsenate.customview.SukhumvitTextView
+                android:id="@+id/btn01"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:gravity="center"
+                android:text="@string/btn_live"
+                android:background="@drawable/custom_white_border_button"/>
+
+            <com.dooplus.keng.tvsenate.customview.SukhumvitTextView
+                android:id="@+id/btn02"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:gravity="center"
+                android:text="@string/btn_vod"
+                android:background="@drawable/custom_white_border_button"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layoutButton"
+            android:scrollbars="none"
+            android:divider="@color/divider_color"
+            android:dividerHeight="1dp"
+            android:visibility="gone"></ListView>
+
         <VideoView
             android:id="@+id/videoView"
             android:layout_width="match_parent"

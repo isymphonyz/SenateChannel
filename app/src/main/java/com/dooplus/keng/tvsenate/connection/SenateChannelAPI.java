@@ -45,6 +45,7 @@ public class SenateChannelAPI extends AsyncTask<String, Void, String> {
         okHttpClient = new OkHttpClient();
 
         Log.d(TAG, "onPreExecutew");
+        Log.d(TAG, "URL: " + url);
 
         if (mListener != null) {
             mListener.onSenateChannelAPIPreExecuteConcluded();

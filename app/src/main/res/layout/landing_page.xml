@@ -36,6 +36,15 @@
 
         </LinearLayout>
 
+        <com.dooplus.keng.tvsenate.customview.SukhumvitTextView
+            android:id="@+id/txtVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:text="@string/app_name"/>
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"

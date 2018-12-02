@@ -247,6 +247,31 @@
 
         </HorizontalScrollView>
 
+        <ImageView
+            android:id="@+id/imgArrowLeft"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignTop="@+id/navigation"
+            android:layout_alignParentBottom="true"
+            android:adjustViewBounds="true"
+            android:alpha="0.4"
+            android:background="@color/color_grey"
+            android:src="@mipmap/ic_arrow_left_01"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/imgArrowRight"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignTop="@+id/navigation"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:adjustViewBounds="true"
+            android:alpha="0.4"
+            android:background="@color/color_grey"
+            android:src="@mipmap/ic_arrow_right_01"
+            android:visibility="visible"/>
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

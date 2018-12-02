@@ -18,6 +18,15 @@
     <string name="menu_privacy">Privacy</string>
     <string name="menu_about">About</string>
 
+    <!-- Live -->
+    <string name="btn_live">รายการสด</string>
+    <string name="btn_vod">ย้อนหลัง</string>
+
+    <!-- News Temporary -->
+    <string name="btn_nla">สภานิติบัญญัติแห่งชาติ</string>
+    <string name="btn_committee">คณะกรรมาธิการ</string>
+    <string name="btn_senate">สำนักงานเลขาธิการวุฒิสภา</string>
+
     <!-- EBook -->
     <string name="ebook_pdf">PDF</string>
     <string name="ebook_digital">Digital</string>

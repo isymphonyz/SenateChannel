@@ -42,11 +42,22 @@
 
     </LinearLayout>
 
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layoutButton"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:background="@mipmap/shelfcell_bgr">
+    </GridView>
+
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layoutButton">
+        android:layout_below="@+id/layoutButton"
+        android:visibility="gone">
     </WebView>
 
     <ProgressBar

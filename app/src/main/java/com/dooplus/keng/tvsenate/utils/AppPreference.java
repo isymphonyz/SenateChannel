@@ -37,7 +37,7 @@ public class AppPreference {
 
 	public void setDeviceToken(String deviceToken) {
 		SharedPreferences.Editor editor = this.preference.edit();
-		editor.putString(this.URL_IPTV, DEVICE_TOKEN);
+		editor.putString(this.DEVICE_TOKEN, deviceToken);
 		editor.commit();
 	}
 
