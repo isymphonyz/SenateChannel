@@ -87,7 +87,7 @@ public class SenateFragmentNews extends Fragment {
     }
 
     private void initValue() {
-        url = AppPreference.getInstance(getActivity()).getURLNews();
+        //url = AppPreference.getInstance(getActivity()).getURLNews();
     }
 
     private void initUI(View rootView) {
@@ -129,6 +129,7 @@ public class SenateFragmentNews extends Fragment {
                 startActivity(i);*/
             }
         });
+        Log.d(TAG, "categoryList.size(): " + categoryList.size());
         updateListView(categoryList.get(0));
     }
 
@@ -147,6 +148,7 @@ public class SenateFragmentNews extends Fragment {
 
     void run() throws IOException {
 
+        Log.d(TAG, "url: " + url);
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -169,7 +171,7 @@ public class SenateFragmentNews extends Fragment {
                     public void run() {
                         //Log.d(TAG, myResponse);
                         xmlString = myResponse;
-
+                        Log.d(TAG, "xmlString: " + xmlString);
                         xmlToJson = new XmlToJson.Builder(xmlString).build();
                         Log.d(TAG, xmlToJson.toFormattedString());
                         getNews(xmlToJson.toFormattedString());
@@ -227,12 +229,34 @@ public class SenateFragmentNews extends Fragment {
                                 //newsURLList.add(jObjDescription.optString("url"));
                                 newsURLList.add("https://www.google.com");
 
-                                JSONObject jObjDescription = jObjNewsInfo.optJSONObject("description");
+                                /*JSONObject jObjDescription = jObjNewsInfo.optJSONObject("description");
                                 newsDesc1List.add(jObjDescription.optString("news_desc_1"));
                                 newsDesc2List.add(jObjDescription.optString("news_desc_2"));
                                 newsDescImg1List.add(jObjDescription.optString("img_1"));
                                 newsDescImg2List.add(jObjDescription.optString("img_2"));
-                                newsDescImg3List.add(jObjDescription.optString("img_3"));
+                                newsDescImg3List.add(jObjDescription.optString("img_3"));*/
+
+                                newsDesc1List.add(jObjNewsInfo.optString("news_desc"));
+                                newsDesc2List.add("");
+
+                                /*JSONObject jObjImg = jObjNewsInfo.optJSONObject("news_photo");
+                                newsDescImg1List.add(jObjImg.optString("img_1"));
+                                newsDescImg2List.add(jObjImg.optString("img_2"));
+                                newsDescImg3List.add(jObjImg.optString("img_3"));*/
+                                if(jObjNewsInfo.opt("news_photo") instanceof JSONObject) {
+                                    JSONObject jObjImg = jObjNewsInfo.optJSONObject("news_photo");
+                                    newsDescImg1List.add(jObjImg.optString("img_1"));
+                                    newsDescImg2List.add(jObjImg.optString("img_2"));
+                                    newsDescImg3List.add(jObjImg.optString("img_3"));
+                                } else {
+                                    JSONArray jArrayNewsPhoto = jObjNewsInfo.optJSONArray("news_photo");
+                                    for(int x=0; x<jArrayNewsPhoto.length(); x++) {
+                                        JSONObject jObjNewsPhoto = jArrayNewsPhoto.optJSONObject(x);
+                                        newsDescImg1List.add(jObjNewsPhoto.optString("img_1"));
+                                        newsDescImg2List.add(jObjNewsPhoto.optString("img_2"));
+                                        newsDescImg3List.add(jObjNewsPhoto.optString("img_3"));
+                                    }
+                                }
                             }
                         }
                     }
@@ -253,6 +277,9 @@ public class SenateFragmentNews extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
             Log.d(TAG, "Exception: " + e.toString());
+
+            progressBar.setVisibility(View.GONE);
+            setUI();
         }
 
     }

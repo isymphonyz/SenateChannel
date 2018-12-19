@@ -95,7 +95,7 @@ public class SenateChannelHomeV3 extends AppCompatActivity {
         btnNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedFragment = SenateFragmentNewsTemporary.newInstance();
+                selectedFragment = SenateFragmentNews.newInstance();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.commit();
