@@ -107,30 +107,6 @@
                     android:layout_gravity="center">
 
                     <ImageView
-                        android:id="@+id/btnNews"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:src="@mipmap/ic_news_01"
-                        android:layout_gravity="center"/>
-
-                    <com.dooplus.keng.tvsenate.customview.SukhumvitTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="@string/menu_news"
-                        android:textColor="@color/color_white"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:orientation="vertical"
-                    android:layout_gravity="center">
-
-                    <ImageView
                         android:id="@+id/btnRadio"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
@@ -143,6 +119,30 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="@string/menu_radio"
+                        android:textColor="@color/color_white"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/btnNews"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@mipmap/ic_news_01"
+                        android:layout_gravity="center"/>
+
+                    <com.dooplus.keng.tvsenate.customview.SukhumvitTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/menu_news"
                         android:textColor="@color/color_white"/>
 
                 </LinearLayout>

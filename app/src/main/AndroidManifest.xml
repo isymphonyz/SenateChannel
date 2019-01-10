@@ -51,6 +51,12 @@
             android:screenOrientation="portrait"
             android:hardwareAccelerated="true">
         </activity>
+        <activity
+            android:name=".SenateChannelNewsDetail"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true">
+        </activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

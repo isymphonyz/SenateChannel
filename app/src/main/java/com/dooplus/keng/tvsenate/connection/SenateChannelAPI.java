@@ -27,7 +27,8 @@ public class SenateChannelAPI extends AsyncTask<String, Void, String> {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     private OkHttpClient okHttpClient;
-    private String url = MyConfiguration.DOMAIN + MyConfiguration.API;
+    //private String url = MyConfiguration.DOMAIN + MyConfiguration.API;
+    private String url = MyConfiguration.API;
     private String deviceToken = "";
 
     private SenateChannelAPIListener mListener;

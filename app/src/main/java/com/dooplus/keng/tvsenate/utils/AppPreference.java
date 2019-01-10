@@ -8,6 +8,7 @@ public class AppPreference {
 	private final String DEVICE_TOKEN = "deviceToken";
 	private final String URL_IPTV = "urlIPTV";
 	private final String URL_RADIO = "urlRadio";
+	private final String URL_RADIO_LIVE = "urlRadioLive";
 	private final String URL_NEWS = "urlNews";
 	private final String URL_LEGISLATION = "urlLegislation";
 	private final String URL_EBOOK = "urlEBook";
@@ -66,6 +67,17 @@ public class AppPreference {
 	public String getURLRadio() {
 		String urlRadio = this.preference.getString(this.URL_RADIO, "http://103.3.65.74:8000");
 		return urlRadio;
+	}
+
+	public void setURLRadioLive(String urlRadioLive) {
+		SharedPreferences.Editor editor = this.preference.edit();
+		editor.putString(this.URL_RADIO_LIVE, urlRadioLive);
+		editor.commit();
+	}
+
+	public String getURLRadioLive() {
+		String urlRadioLive = this.preference.getString(this.URL_RADIO_LIVE, "");
+		return urlRadioLive;
 	}
 
 	public void setURLNews(String urlNews) {

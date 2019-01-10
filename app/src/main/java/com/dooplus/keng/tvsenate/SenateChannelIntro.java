@@ -106,7 +106,7 @@ public class SenateChannelIntro extends AppCompatActivity {
     final Runnable Update = new Runnable() {
         public void run() {
             if (currentPage == NUM_PAGES) {
-                currentPage = 0;
+                //currentPage = 0;
                 Intent intent = new Intent(getApplicationContext(), SenateChannelHomeV3.class);
                 intent.putExtra("fragmentNumber", 0);
                 startActivity(intent);

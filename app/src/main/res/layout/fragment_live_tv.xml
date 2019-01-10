@@ -55,6 +55,27 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true" />
 
+        <RelativeLayout
+            android:id="@+id/layoutPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/videoView"
+            android:layout_alignLeft="@+id/videoView"
+            android:layout_alignBottom="@+id/videoView"
+            android:layout_alignRight="@+id/videoView"
+            android:background="#44000000"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/btnPlayPause"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
+                android:src="@android:drawable/ic_media_pause"/>
+
+        </RelativeLayout>
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"

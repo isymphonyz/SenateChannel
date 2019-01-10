@@ -175,11 +175,10 @@ public class SenateChannelLandingPage extends AppCompatActivity {
         try {
             Log.d(TAG, "result: " + result);
             JSONObject jObj = new JSONObject(result);
-            String status = jObj.optString("status");
-            String message = jObj.optString("message");
+            boolean status = jObj.optBoolean("status");
 
-            Log.d(TAG, "message: " + message);
-            if(status.equals("200")) {
+            Log.d(TAG, "status: " + status);
+            if(status) {
                 JSONObject jObjData = jObj.optJSONObject("data");
 
                 JSONObject jObjLandingPage = jObjData.optJSONObject("landing_page");
@@ -187,49 +186,29 @@ public class SenateChannelLandingPage extends AppCompatActivity {
                 for(int x=0; x<jArrayImage.length(); x++) {
                     landingPageImageList.add(MyConfiguration.DOMAIN + jArrayImage.optJSONObject(x).optString("image"));
                 }
-                appPreference.setIntervalTime(Integer.parseInt(jObjLandingPage.optString("timeintervel")));
+                appPreference.setIntervalTime(Integer.parseInt(jObjData.optJSONObject("set-feature-interval").optString("value")));
 
-                JSONArray jArrayNews = jObjData.optJSONArray("news");
-                if(jArrayNews.length() > 0) {
-                    appPreference.setURLNews(jArrayNews.optJSONObject(0).optString("link"));
+                appPreference.setURLNews(jObjData.optJSONObject("resc-news").optString("value"));
+                appPreference.setURLIPTV(jObjData.optJSONObject("resc-stream-tv").optString("value"));
+                appPreference.setURLRadio(jObjData.optJSONObject("resc-stream").optString("value"));
+                appPreference.setURLRadioLive(jObjData.optJSONObject("link-fb").optString("value"));
+                appPreference.setURLLegislation(jObjData.optJSONObject("resc-legislative").optString("value"));
+                appPreference.setURLEBook(jObjData.optJSONObject("resc-book").optString("value"));
+                appPreference.setURLDigitalBook(jObjData.optJSONObject("resc-interactive").optString("value"));
+                appPreference.setURLPrivacy(jObjData.optJSONObject("resc-privacy").optString("value"));
+                appPreference.setURLAbout(jObjData.optJSONObject("resc-about").optString("value"));
+
+                JSONArray jArrayLandingPageImageList = jObjData.optJSONObject("resc-feature").optJSONArray("value");
+                for(int x=0; x<jArrayLandingPageImageList.length(); x++) {
+                    landingPageImageList.add(jArrayLandingPageImageList.optString(x));
                 }
 
-                JSONArray jArrayIPTV = jObjData.optJSONArray("iptv");
-                if(jArrayIPTV.length() > 0) {
-                    appPreference.setURLIPTV(jArrayIPTV.optJSONObject(0).optString("link"));
+                JSONArray jArrayPromoteImageList = jObjData.optJSONObject("resc-promote").optJSONArray("value");
+                String adsImage = "";
+                for(int x=0; x<jArrayPromoteImageList.length(); x++) {
+                    adsImage += jArrayPromoteImageList.optString(x) + "|";
                 }
-
-                JSONArray jArrayRadio = jObjData.optJSONArray("nla_radio");
-                if(jArrayRadio.length() > 0) {
-                    appPreference.setURLRadio(jArrayRadio.optJSONObject(0).optString("link_facebook"));
-                }
-
-                JSONArray jArrayLegislation = jObjData.optJSONArray("legislation");
-                if(jArrayLegislation.length() > 0) {
-                    appPreference.setURLLegislation(jArrayLegislation.optJSONObject(0).optString("link"));
-                }
-
-                JSONArray jArrayBook = jObjData.optJSONArray("book");
-                if(jArrayBook.length() > 0) {
-                    appPreference.setURLEBook(jArrayBook.optJSONObject(0).optString("link_pdf"));
-                    appPreference.setURLDigitalBook(jArrayBook.optJSONObject(0).optString("digtal_pdf"));
-                }
-
-                JSONArray jArrayPrivacy = jObjData.optJSONArray("privacy");
-                if(jArrayPrivacy.length() > 0) {
-                    appPreference.setURLNews(jArrayPrivacy.optJSONObject(0).optString("link"));
-                }
-
-                JSONArray jArrayAbout = jObjData.optJSONArray("about");
-                if(jArrayAbout.length() > 0) {
-                    appPreference.setURLNews(MyConfiguration.DOMAIN + jArrayAbout.optJSONObject(0).optString("image"));
-                }
-
-                JSONArray jArrayAds = jObjData.optJSONArray("adu");
-                if(jArrayAds.length() > 0) {
-                    appPreference.setAdsStatus(jArrayAds.optJSONObject(0).optString("status"));
-                    appPreference.setAdsImage(MyConfiguration.DOMAIN + jArrayAds.optJSONObject(0).optString("image"));
-                }
+                appPreference.setAdsImage(adsImage);
 
                 if(landingPageImageList.size() > 0) {
                     Intent intent = new Intent(getApplicationContext(), SenateChannelIntro.class);

@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.dooplus.keng.tvsenate.R;
+import com.dooplus.keng.tvsenate.SenateChannelHomeV3;
+import com.dooplus.keng.tvsenate.SenateChannelNewsDetail;
 import com.dooplus.keng.tvsenate.adapter.SenateChannelFragmentNewsAdapter;
 import com.dooplus.keng.tvsenate.utils.AppPreference;
 import com.dooplus.keng.tvsenate.utils.MyConfiguration;
@@ -213,8 +215,8 @@ public class SenateFragmentNews extends Fragment {
                             newsURLList.add("https://www.google.com");
 
                             JSONObject jObjDescription = jObjNewsInfo.optJSONObject("description");
-                            newsDesc1List.add(jObjDescription.optString("news_desc_1"));
-                            newsDesc2List.add(jObjDescription.optString("news_desc_2"));
+                            newsDesc1List.add(jObjDescription.optString("news_desc"));
+                            newsDesc2List.add(jObjDescription.optString("news_desc"));
                             newsDescImg1List.add(jObjDescription.optString("img_1"));
                             newsDescImg2List.add(jObjDescription.optString("img_2"));
                             newsDescImg3List.add(jObjDescription.optString("img_3"));
@@ -293,10 +295,18 @@ public class SenateFragmentNews extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String url = (String) newsURLMap.get(category).get(i);
+                /*String url = (String) newsURLMap.get(category).get(i);
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
+                startActivity(intent);*/
+
+                Log.d(TAG, "title: " + newsTitleMap.get(category).get(i).toString());
+                Intent intent = new Intent(getActivity(), SenateChannelNewsDetail.class);
+                intent.putExtra("title", newsTitleMap.get(category).get(i).toString());
+                intent.putExtra("imgTitle", newsImageTitleMap.get(category).get(i).toString());
+                intent.putExtra("description", newsDesc1Map.get(category).get(i).toString());
                 startActivity(intent);
+
             }
         });
         listView.invalidateViews();

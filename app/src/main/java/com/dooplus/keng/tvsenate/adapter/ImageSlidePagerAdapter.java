@@ -15,6 +15,7 @@ import com.dooplus.keng.tvsenate.R;
 import java.util.ArrayList;
 
 import static com.bumptech.glide.request.RequestOptions.centerCropTransform;
+import static com.bumptech.glide.request.RequestOptions.fitCenterTransform;
 
 /**
  * Created by Dooplus on 11/26/15 AD.
@@ -51,7 +52,7 @@ public class ImageSlidePagerAdapter extends PagerAdapter {
 
         Glide.with(context)
                 .load(imageList.get(position))
-                .apply(centerCropTransform()
+                .apply(fitCenterTransform()
                         .placeholder(R.drawable.ic_launcher_foreground)
                         .error(R.drawable.ic_launcher_background)
                         .priority(Priority.HIGH))

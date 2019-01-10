@@ -7,12 +7,15 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.VideoView;
 
 import com.dooplus.keng.tvsenate.R;
@@ -24,6 +27,8 @@ import com.dooplus.keng.tvsenate.utils.MyConfiguration;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SenateFragmentLiveTV extends Fragment {
 
@@ -36,6 +41,8 @@ public class SenateFragmentLiveTV extends Fragment {
     private SenateChannelFragmentLiveTVAdapter adapter;
     private SukhumvitTextView btn01;
     private SukhumvitTextView btn02;
+    private RelativeLayout layoutPlayer;
+    private ImageView btnPlayPause;
 
     private String urlLiveTV = MyConfiguration.URL_LIVE_TV;
     private ArrayList<String> animationNameList;
@@ -80,8 +87,9 @@ public class SenateFragmentLiveTV extends Fragment {
         progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
         videoView = (VideoView) rootView.findViewById(R.id.videoView);
         mediaController = new MediaController(getActivity());
-        mediaController.setAnchorView(videoView);
-        videoView.setMediaController(mediaController);
+        //mediaController.setAnchorView(videoView);
+        //mediaController.setMediaPlayer(videoView);
+        //videoView.setMediaController(mediaController);
 
         listView = (ListView) rootView.findViewById(R.id.listView);
         adapter = new SenateChannelFragmentLiveTVAdapter(getActivity());
@@ -92,6 +100,9 @@ public class SenateFragmentLiveTV extends Fragment {
 
         btn01 = (SukhumvitTextView) rootView.findViewById(R.id.btn01);
         btn02 = (SukhumvitTextView) rootView.findViewById(R.id.btn02);
+
+        layoutPlayer = (RelativeLayout) rootView.findViewById(R.id.layoutPlayer);
+        btnPlayPause = (ImageView) rootView.findViewById(R.id.btnPlayPause);
     }
 
     private void setUI() {
@@ -100,6 +111,28 @@ public class SenateFragmentLiveTV extends Fragment {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 progressBar.setVisibility(View.GONE);
+            }
+        });
+
+        videoView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                layoutPlayer.setVisibility(View.VISIBLE);
+                showPlayer();
+                return false;
+            }
+        });
+
+        btnPlayPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(videoView.isPlaying()) {
+                    btnPlayPause.setImageResource(android.R.drawable.ic_media_play);
+                    videoView.pause();
+                } else {
+                    btnPlayPause.setImageResource(android.R.drawable.ic_media_pause);
+                    videoView.start();
+                }
             }
         });
 
@@ -144,5 +177,20 @@ public class SenateFragmentLiveTV extends Fragment {
     public void onPause() {
         super.onPause();
         Log.d(TAG, "onPause");
+    }
+
+    private void showPlayer() {
+        Timer T=new Timer();
+        T.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        layoutPlayer.setVisibility(View.GONE);
+                    }
+                });
+            }
+        }, 1000, 3000);
     }
 }

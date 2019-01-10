@@ -8,7 +8,8 @@ public class MyConfiguration {
     //public static String URL_LEGISLATION = "http://www.senate.go.th/w3c/senate/m_lawdraft.php";
     //public static String URL_EBOOK = "http://www.senate.go.th/book_shelf/book_detail.php";
     public static String DOMAIN = "http://channel.senate.go.th";
-    public static String API = "/senate-admin/web/index.php?r=apimain";
+    //public static String API = "/senate-admin/web/index.php?r=apimain";
+    public static String API = "https://channel.senate.go.th/mam/service/mobile/content/readscontent";
     //public static String URL_NEWS = "http://web.senate.go.th/mobile/news/senatenews_xml.php";
     public static String URL_NEWS = "https://service.senate.go.th/webservice/news/senatenews_xml.php";
     public static String URL_LIVE_TV = "http://49.231.20.43/StreamService/senate/high/heve.m3u8";

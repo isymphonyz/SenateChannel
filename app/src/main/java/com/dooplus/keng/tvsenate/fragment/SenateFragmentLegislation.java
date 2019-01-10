@@ -1,10 +1,14 @@
 package com.dooplus.keng.tvsenate.fragment;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +32,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class SenateFragmentLegislation extends Fragment {
+
+    private String TAG = SenateFragmentLegislation.class.getSimpleName();
 
     private ProgressBar progressBar;
     private WebView webView;
@@ -128,6 +134,15 @@ public class SenateFragmentLegislation extends Fragment {
                 WebResourceResponse response = new WebResourceResponse(mimeType, encoding, input);
 
                 return response;
+            } else if (url.endsWith("pdf")){
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(Uri.parse(url), "application/pdf");
+                try{
+                    view.getContext().startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    //user does not have a pdf viewer installed
+                    Log.d(TAG, "ActivityNotFoundException: " + e.toString());
+                }
             }
 
             return this.urlCache.load(url);
