@@ -1,5 +1,6 @@
 package com.dooplus.keng.tvsenate.fragment;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ public class SenateFragmentLiveTV extends Fragment {
     private SukhumvitTextView btn02;
     private RelativeLayout layoutPlayer;
     private ImageView btnPlayPause;
+    private SukhumvitTextView btnShare;
 
     private String urlLiveTV = MyConfiguration.URL_LIVE_TV;
     private ArrayList<String> animationNameList;
@@ -103,6 +105,8 @@ public class SenateFragmentLiveTV extends Fragment {
 
         layoutPlayer = (RelativeLayout) rootView.findViewById(R.id.layoutPlayer);
         btnPlayPause = (ImageView) rootView.findViewById(R.id.btnPlayPause);
+
+        btnShare = (SukhumvitTextView) rootView.findViewById(R.id.btnShare);
     }
 
     private void setUI() {
@@ -169,6 +173,17 @@ public class SenateFragmentLiveTV extends Fragment {
                 videoView.setVisibility(View.VISIBLE);
                 videoView.setVideoPath(animationUrlList.get(position));
                 videoView.start();
+            }
+        });
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, urlLiveTV);
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
             }
         });
     }

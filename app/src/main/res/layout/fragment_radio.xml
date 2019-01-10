@@ -29,6 +29,17 @@
             android:background="@android:color/transparent"
             android:alpha="0.5"/>
 
+        <com.dooplus.keng.tvsenate.customview.SukhumvitTextView
+            android:id="@+id/btnShare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:padding="8dp"
+            android:gravity="center"
+            android:text="@string/btn_share"
+            android:background="@drawable/custom_room_button"/>
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"

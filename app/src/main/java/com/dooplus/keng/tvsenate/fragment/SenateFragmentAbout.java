@@ -14,6 +14,7 @@ import com.dooplus.keng.tvsenate.R;
 import com.dooplus.keng.tvsenate.utils.AppPreference;
 
 import static com.bumptech.glide.request.RequestOptions.centerCropTransform;
+import static com.bumptech.glide.request.RequestOptions.fitCenterTransform;
 
 public class SenateFragmentAbout extends Fragment {
 
@@ -38,7 +39,7 @@ public class SenateFragmentAbout extends Fragment {
     }
 
     private void initValue() {
-        image = AppPreference.getInstance(getActivity()).getURLIPTV();
+        image = AppPreference.getInstance(getActivity()).getURLAbout();
     }
 
     private void initUI(View rootView) {
@@ -48,9 +49,9 @@ public class SenateFragmentAbout extends Fragment {
     private void setUI() {
         Glide.with(this)
                 .load(image)
-                .apply(centerCropTransform()
-                        .placeholder(R.drawable.ic_launcher_foreground)
-                        .error(R.drawable.ic_launcher_background)
+                .apply(fitCenterTransform()
+                        .placeholder(R.mipmap.img_logo_01)
+                        .error(R.mipmap.img_about_01)
                         .priority(Priority.HIGH))
                 .into(imgLogo);
     }

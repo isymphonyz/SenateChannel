@@ -49,6 +49,9 @@ public class SenateChannelEBookGridViewAdapter extends BaseAdapter {
 
     public int getCount() {
         //return data.length;
+        if(coverLinkList.size() >= 10) {
+            return 10;
+        }
         return coverLinkList.size();
     }
 

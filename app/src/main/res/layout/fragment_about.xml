@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SenateChannelLandingPage">
+    tools:context=".SenateChannelLandingPage"
+    android:background="@color/colorBackgroundSubtitle">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackground">
+        android:background="@color/colorBackgroundSubtitle">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -23,7 +24,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
-                android:src="@mipmap/img_logo_01"/>
+                android:scaleType="fitXY"
+                android:src="@mipmap/img_about_01"/>
 
             <com.dooplus.keng.tvsenate.customview.SukhumvitTextView
                 android:layout_width="wrap_content"

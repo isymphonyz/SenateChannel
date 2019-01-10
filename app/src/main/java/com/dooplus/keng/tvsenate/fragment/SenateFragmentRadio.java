@@ -1,5 +1,6 @@
 package com.dooplus.keng.tvsenate.fragment;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.VideoView;
 
 import com.dooplus.keng.tvsenate.R;
+import com.dooplus.keng.tvsenate.customview.SukhumvitTextView;
 import com.dooplus.keng.tvsenate.utils.AppPreference;
 import com.dooplus.keng.tvsenate.utils.MyConfiguration;
 
@@ -22,6 +24,7 @@ public class SenateFragmentRadio extends Fragment {
     private VideoView videoView;
     private MediaController mediaController;
     private Typeface tf;
+    private SukhumvitTextView btnShare;
 
     private String urlRadio = MyConfiguration.URL_RADIO;
 
@@ -52,6 +55,8 @@ public class SenateFragmentRadio extends Fragment {
         mediaController = new MediaController(getActivity());
         mediaController.setAnchorView(videoView);
         videoView.setMediaController(mediaController);
+
+        btnShare = (SukhumvitTextView) rootView.findViewById(R.id.btnShare);
     }
 
     private void setUI() {
@@ -65,5 +70,16 @@ public class SenateFragmentRadio extends Fragment {
 
         videoView.setVideoPath(urlRadio);
         videoView.start();
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, urlRadio);
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+            }
+        });
     }
 }

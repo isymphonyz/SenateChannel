@@ -36,6 +36,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import fr.arnaudguyon.xmltojsonlib.XmlToJson;
@@ -320,6 +321,15 @@ public class SenateFragmentEBook extends Fragment {
                         allPDFLinkList.add(jArrayBookDetail.optJSONObject(j).optString("pdf_link"));
                     }
                 }
+
+                Collections.reverse(titleList);
+                Collections.reverse(coverList);
+                Collections.reverse(pdfList);
+                Collections.reverse(swfList);
+                Collections.reverse(idList);
+                Collections.reverse(allCoverLinkList);
+                Collections.reverse(allPDFLinkList);
+
                 titleMap.put(topicList.get(i), titleList);
                 coverLinkMap.put(topicList.get(i), coverList);
                 pdfLinkMap.put(topicList.get(i), pdfList);

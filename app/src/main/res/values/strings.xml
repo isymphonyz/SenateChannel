@@ -7,6 +7,7 @@
     <string name="error_server">Connection Error.</string>
 
     <string name="txt_title">สำนักงานเลขาธิการวุฒิสภา</string>
+    <string name="btn_share">แชร์</string>
 
     <!-- Menu -->
     <string name="menu_news">News</string>
